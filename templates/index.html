@@ -1,0 +1,117 @@
+{% extends"base.html" %}
+
+{% block content %}
+    
+    <div class="container px-4 text-center">
+           <div class="row gx-5 justify-content-between">
+              <div class="col-sm-2">
+                <div class="p-3 bg-success text-white shadow-sm" id="titre_h">Budget</div>
+                <div class="p-3 text-dark bg-dark shadow-sm" id="montant_h"> {{ mon_budget }} F CFA</div>
+              </div>
+              <div class="col-sm-2">
+                <div class="p-3 bg-success text-white shadow-sm" id="titre_h">Dépenses</div>
+                <div class="p-3 text-dark bg-dark shadow-sm" id="montant_h"> {{ depense_total }} F CFA</div>
+              </div>
+              <div class="col-sm-2">
+                <div class="p-3 bg-success text-white shadow-sm" id="titre_h">Solde</div>
+                <div class="p-3 text-dark bg-dark shadow-sm" id="montant_h"> {{ revenu_total }} F CFA</div>
+              </div>
+           </div>
+    </div>
+    
+          <div class="container">
+            <h2 id="titre-table">Liste des dépenses</h2>
+    
+            <div class="table-responsive">
+              {% if depenses %}
+              <table class="table table-bordered">
+                <thead class="table-success">
+                  <tr>
+                    <th scope="col">titre</th>
+                    <th scope="col">montant</th>
+                    <th scope="col">actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for depense in depenses %}
+                    <tr>
+                      <td> {{ depense.titre }} </td>
+                      <td>{{ depense.montant }}</td>
+                      <td><a href="/sup_depenses/{{depense.id}}/" class="btn btn-danger">supprimer</a></td>
+                    </tr>
+                  {% endfor %}
+                  <tr>
+                    <td id="ajouter">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-start">
+                          ajouter dépense
+                        </div> 
+                        <div class="d-flex justify-content-end">
+                          <a href="/recors_depense/" class="link-warning">
+                            <i class="bi bi-plus-circle"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                    <td scope="col"></td>
+                    <td scope="col"></td>
+                  </tr>
+                </tbody>
+              </table>
+              {% else %}
+              <p>
+                Vous n'avez pas d'enregistrement dans la base ? 
+                <a href="/recors_depense/"> cliquer ici </a>
+              </p>
+              {% endif %}
+            </div>
+          </div>
+    
+          <div class="container">
+            <h2 id="titre-table">Liste des revenus</h2>
+            <div class="table-responsive">
+              {% if revenus %}
+              <table class="table table-bordered">
+                <thead class="text-center table-success">
+                  <tr>
+                    <th scope="col">titre</th>
+                    <th scope="col">montant</th>
+                    <th scope="col">actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for revenu in revenus %}
+                    <tr>
+                      <td> {{ revenu.titre }} </td>
+                      <td> {{ revenu.montant }} </td>
+                      <td><a href="/sup_revenus/{{revenu.id}}/" class="btn btn-danger">supprimer</a></td>
+                    </tr>
+                  {% endfor %}
+                  <tr>
+                    <td id="ajouter">
+                      <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-start">
+                            ajouter dépense
+                          </div> 
+                          <div class="d-flex justify-content-end">
+                            <a href="/recors_revenu/" class="link-warning"><i class="bi bi-plus-circle"></i></a>
+                          </div>
+                      </div>
+                    </td>
+                    <td scope="col"></td>
+                    <td scope="col"></td>
+                  </tr>
+                </tbody>
+              </table>
+              {% else %}
+                <p>
+                  Vous n'avez pas d'enregistrement dans la base ?
+                  <a href="/recors_revenu/"> cliquer ici </a>
+                </p>
+              {% endif %}
+            </div>
+        </div>
+      {% endblock content %} 
+    
+    </body>
+    </html>

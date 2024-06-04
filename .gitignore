@@ -1,0 +1,15 @@
+.vscode
+
+###  Flask  ###
+instance/*
+!instance/.gitignore
+.webassets-cache
+
+### flask.python stack ###
+# Byte-compiled /optiomized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so

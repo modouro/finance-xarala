@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 class="text-center">Ajouter dépense</h1>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form action="{{url_for('recors_depense')}}" class="" method="post">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">titre</label>
+                    <input type="text" name="titre" class="form-control h-40" id="formGroupExampleInput" required>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">montant</label>
+                    <input type="text" name="montant" class="form-control" id="formGroupExampleInput2" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">valider</button>
+              </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+{% endblock content %}
